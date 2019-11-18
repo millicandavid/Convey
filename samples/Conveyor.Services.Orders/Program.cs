@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Convey;
 using Convey.Logging;
+using Convey.WebApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +23,7 @@ namespace Conveyor.Services.Orders
                             .AddNewtonsoftJson();
                     })
                     .Configure(app => app
+                        .UseErrorHandler()
                         .UseRouting()
                         .UseEndpoints(r => r.MapControllers()))
                     .UseLogging();
